@@ -19,7 +19,7 @@ public class RunnerTest extends JUnitStories {
                         new StoryReporterBuilder()
                                 .withDefaultFormats()
                                 .withFormats(Format.HTML, Format.CONSOLE)
-                                .withRelativeDirectory("jbehave-report")
+                                .withRelativeDirectory("jbhave-report")
                 );
     }
 
