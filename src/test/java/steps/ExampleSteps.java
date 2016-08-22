@@ -10,6 +10,7 @@ public class ExampleSteps extends Steps {
 
     private Example example;
 
+
     @Given("I create a new Example Object without any name")
     public void createNewExampleObject() {
         example = new Example();
