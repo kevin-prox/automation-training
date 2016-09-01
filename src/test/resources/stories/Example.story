@@ -1,7 +1,7 @@
 Example
 
 Meta:
-@suite Training
+@Training
 
 Narrative:
 As a trainee
