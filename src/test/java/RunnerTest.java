@@ -7,6 +7,12 @@ import org.jbehave.core.reporters.*;
 import org.jbehave.core.steps.*;
 import org.jbehave.core.steps.Steps;
 import steps.ExampleSteps;
+import steps.HomePageSteps;
+import steps.SearchResultsSteps;
+
+import static java.util.Arrays.asList;
+
+import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 
 public class RunnerTest extends JUnitStories {
 
@@ -27,18 +33,16 @@ public class RunnerTest extends JUnitStories {
     public InjectableStepsFactory stepsFactory() {
         ArrayList<Steps> stepFileList = new ArrayList<Steps>();
         stepFileList.add(new ExampleSteps());
+        stepFileList.add(new HomePageSteps());
+        stepFileList.add(new SearchResultsSteps());
 
         return new InstanceStepsFactory(configuration(), stepFileList);
     }
 
     @Override
     protected List<String> storyPaths() {
-        return new StoryFinder().
-                findPaths(CodeLocations.codeLocationFromClass(
-                        this.getClass()),
-                        Arrays.asList("**/*.story"),
-                        Arrays.asList(""));
+        return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()).getFile(),
+                asList("**/" + System.getProperty("storyFilter", "*") + ".story"), null);
 
     }
-
 }
