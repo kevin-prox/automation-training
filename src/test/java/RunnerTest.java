@@ -7,6 +7,7 @@ import org.jbehave.core.reporters.*;
 import org.jbehave.core.steps.*;
 import org.jbehave.core.steps.Steps;
 import steps.ExampleSteps;
+import steps.HomePageLoginSteps;
 import steps.HomePageSteps;
 import steps.SearchResultsSteps;
 
@@ -35,6 +36,7 @@ public class RunnerTest extends JUnitStories {
         stepFileList.add(new ExampleSteps());
         stepFileList.add(new HomePageSteps());
         stepFileList.add(new SearchResultsSteps());
+        stepFileList.add(new HomePageLoginSteps());
 
         return new InstanceStepsFactory(configuration(), stepFileList);
     }

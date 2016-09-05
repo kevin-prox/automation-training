@@ -14,6 +14,16 @@ public class HomePage extends BasePage {
     private static final ByClassName SEARCH_DROPDOWN_BUTTON = new ByClassName("swa-header--search-button");
     private static final ById CLOSE_OVERLAY_BUTTON = new ById("elclose");
 
+
+    private static final ByClassName LOGIN_LINK = new ByClassName("swa-header--login");
+    private static final ByClassName ENROLL_LINK = new ByClassName("swa-header--login-enroll-text");
+    private static final ById USERNAME_FIELD = new ById("username");
+    private static final ById PASSWORD_FIELD = new ById("password");
+    private static final ByClassName LOGIN_BUTTON = new ByClassName("swa-header--login-button\n");
+    private static final ById ERROR_MESSAGE = new ById("password-error");
+
+
+
     public HomePage(FirefoxDriver driver) {
         super(driver);
     }
@@ -37,6 +47,41 @@ public class HomePage extends BasePage {
     public WebElement getCloseButton() {
         return waitForElement(CLOSE_OVERLAY_BUTTON, 30);
     }
+
+
+
+
+    public WebElement getLoginLink() { return waitForElement(LOGIN_LINK, 30); }
+
+
+    public WebElement getPasswordField() { return waitForElement(PASSWORD_FIELD, 30); }
+
+    public WebElement getLoginButton() { return waitForElement(LOGIN_BUTTON, 30); }
+
+
+    public boolean validateLoginDropdownDisplayed() {
+        return elementExists(ENROLL_LINK);
+    }
+
+    public WebElement getUsernameField() { return waitForElement(USERNAME_FIELD, 30); }
+
+    
+
+    public WebElement getInputFieldUserPassword() {
+        return waitForElement(PASSWORD_FIELD, 30);
+    }
+
+
+
+    public WebElement getErrorMessage(){ return waitForElement(ERROR_MESSAGE, 30); }
+
+
+
+    public boolean validateErrorMjeDisplayed() {
+        return elementExists(ERROR_MESSAGE);
+    }
+
+
 
     public void go() {
         getDriver().get("https://www.southwest.com/");
