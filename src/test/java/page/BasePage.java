@@ -2,6 +2,7 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.By.*;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class BasePage {
 
@@ -49,6 +51,16 @@ public class BasePage {
         return myElement;
     }
 
+    public List<WebElement> waitForElements(By element, long timeout) {
+        try{
+            Thread.sleep(4000);
+        } catch (Exception e) {}
+
+        List<WebElement> myElements = getDriver().findElements(element);
+
+        return myElements;
+    }
+
     public boolean elementExists(By element) {
         boolean elementExists = false;
 
@@ -65,5 +77,13 @@ public class BasePage {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
         }
+    }
+
+    public void go() {
+        getDriver().get("https://southwest.dev1.southwest.com/");
+        getDriver().manage().window().maximize();
+        sleep();
+        getBody().sendKeys(Keys.ESCAPE);
+        sleep();
     }
 }
