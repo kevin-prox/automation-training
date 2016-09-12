@@ -9,7 +9,11 @@ import static org.junit.Assert.*;
 
 public class SearchResultsSteps extends Steps {
 
-    private SearchResultsPage searchResultsPage = PageFactory.getSearchResultsPageInstance();
+    private SearchResultsPage searchResultsPage;
+
+    public SearchResultsSteps(PageFactory pageFactory) {
+        this.searchResultsPage = pageFactory.getSearchResultsPageInstance();
+    }
 
     @Then("I see the search keyword in the Search title")
     public void validateSearchResultPageTitle() {

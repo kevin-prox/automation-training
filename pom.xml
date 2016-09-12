@@ -298,7 +298,7 @@
                                 <phase>integration-test</phase>
                                 <configuration>
                                     <includes>
-                                        <include>**/SWAUIAppStories.java</include>
+                                        <include>**/RunnerTest.java</include>
                                     </includes>
                                     <excludes />
                                     <generateViewAfterStories>true</generateViewAfterStories>
