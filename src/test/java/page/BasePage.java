@@ -52,9 +52,11 @@ public class BasePage {
     }
 
     public List<WebElement> waitForElements(By element, long timeout) {
-        try{
-            Thread.sleep(4000);
-        } catch (Exception e) {}
+        try {
+            new WebDriverWait(getDriver(), timeout).until(
+                    ExpectedConditions.visibilityOfElementLocated(element));
+        } catch (TimeoutException toe) {
+        }
 
         List<WebElement> myElements = getDriver().findElements(element);
 

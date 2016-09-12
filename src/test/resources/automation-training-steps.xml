@@ -35,7 +35,7 @@
             <constructor-arg ref="pageFactory"/>
         </bean>
 
-        <bean id="selectFLightSteps" class="steps.SelectFlightSteps">
+        <bean id="selectFlightSteps" class="steps.SelectFlightSteps">
             <constructor-arg ref="pageFactory"/>
         </bean>
     </beans>

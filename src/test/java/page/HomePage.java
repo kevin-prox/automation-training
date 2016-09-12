@@ -64,7 +64,7 @@ public class HomePage extends BasePage {
     }
 
     public void go() {
-        getDriver().get("https://southwest.dev1.southwest.com/");
+        getDriver().get("www.southwest.com/");
         getDriver().manage().window().maximize();
         sleep();
         getBody().sendKeys(Keys.ESCAPE);
