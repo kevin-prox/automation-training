@@ -13,6 +13,7 @@ public class PricePage extends BasePage {
     private static final ByClassName PRICE_PAGE_CONTAINER = new ByClassName("checkout-price-page");
     private static final ByClassName PRICE_PAGE_SEGMENTS = new ByClassName("flight-segments--airport-code");
     private static final ByClassName SUBMIT_BUTTON = new ByClassName("checkout-price-continue-button");
+    private static final ByCssSelector LBL_TRIP_TYPE = new ByCssSelector(".checkout-fare-type-descriptions >  .fare-type-descriptions--item  div.fare-button--title");
 
 
 
@@ -41,4 +42,6 @@ public class PricePage extends BasePage {
     public List<WebElement> getSubmitButton() {
         return waitForElements( SUBMIT_BUTTON,30);
     }
+
+    public  List<WebElement> getLblTripType() { return waitForElements(LBL_TRIP_TYPE,30); }
 }

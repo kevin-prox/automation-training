@@ -23,10 +23,16 @@ public class PricePageSteps extends Steps {
 
     @Then("I validate I am on the Price page")
     public void validatePricePageRedirection() {
+
         assertTrue(pricePage.isPricePageContainerDisplayed());
 
-        assertEquals(pricePage.getTipeFlyLabels().get(0).getText(), "Anytime");
-        assertEquals(pricePage.getTipeFlyLabels().get(1).getText(), "Business Select");
+        assertEquals(pricePage.getTipeFlyLabels().get(0).getText(), pricePage.getLblTripType().get(0).getText());
+        if (pricePage.getLblTripType().size()> 1){
+            //we validate this part ONLY if the trip type is roundTrip because
+            //if it's one way then it has just one flight
+            assertEquals(pricePage.getTipeFlyLabels().get(1).getText(), pricePage.getLblTripType().get(1).getText());
+        }
+
     }
 
     @Then("I validate the departure and return stations are the ones selected in the Plan a Trip page")
