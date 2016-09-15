@@ -38,6 +38,11 @@
         <bean id="selectFlightSteps" class="steps.SelectFlightSteps">
             <constructor-arg ref="pageFactory"/>
         </bean>
+
+        <bean id="PurchasePageSteps" class="steps.PurchasePageSteps">
+            <constructor-arg ref="pageFactory"/>
+        </bean>
+
     </beans>
 </beans>
 

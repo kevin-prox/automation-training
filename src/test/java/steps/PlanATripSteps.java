@@ -14,6 +14,8 @@ public class PlanATripSteps extends Steps {
 
     private PlanATripPage planATripPage;
 
+    private DateTime DT = new DateTime();
+
     public PlanATripSteps(PageFactory pageFactory) {
         this.planATripPage = pageFactory.getPlanATripInstance();
     }
@@ -31,9 +33,8 @@ public class PlanATripSteps extends Steps {
 
             switch(key) {
                 case "flightType":
-                    if ("ONE_WAY".equalsIgnoreCase(value)) {
-                        planATripPage.getOneWayRadio().click();
-                    }
+                    if ("ONE_WAY".equalsIgnoreCase(value)) planATripPage.getOneWayRadio().click();
+                    else planATripPage.getRoundTripRadio().click();
                     break;
                 case "departureCity":
                     planATripPage.storeValue("departureCity", value);
@@ -45,13 +46,25 @@ public class PlanATripSteps extends Steps {
                     planATripPage.getArriveInput().sendKeys(value);
                     planATripPage.getArriveInput().sendKeys(Keys.TAB);
                     break;
-                case "departureDate":
-                    planATripPage.getDepartureDateInput().sendKeys(getDate(Integer.valueOf(value)));
+                case "departureDate": //al dia de hoy le sumo la cantidad de dias que me pasan por parametro
+                    final String str = (DT.getMonthOfYear())+"/"+DT.plusDays(Integer.valueOf(value)).getDayOfMonth();
+                    planATripPage.getDepartureDateInput().sendKeys(str);
+                    //planATripPage.getDepartureDateInput().sendKeys(getDate(Integer.valueOf(value)));
                     planATripPage.getDepartureDateInput().sendKeys(Keys.TAB);
                     break;
-                case "returnDate":
-                    planATripPage.getReturnDateInput().sendKeys(getDate(Integer.valueOf(value)));
+                case "returnDate": //al dia de hoy le sumo la cantidad de dias que me pasan por parametro
+                    //planATripPage.getReturnDateInput().sendKeys(getDate(Integer.valueOf(value)));
+                    planATripPage.getReturnDateInput().sendKeys((DT.plusMonths(1).getMonthOfYear())+"/"+DT.plusDays(Integer.valueOf(value)).getDayOfMonth());
                     planATripPage.getReturnDateInput().sendKeys(Keys.TAB);
+                    break;
+                case "adultCounter":
+                    planATripPage.getAdultCounter().click();
+                    int actualAdultNumber = 1;
+                    int adultsNumber = Integer.valueOf(planATripPage.getAdultNumber().getText());
+                    while (adultsNumber == actualAdultNumber ) {
+                        actualAdultNumber++;
+                        planATripPage.getAdultCountrPlus().click();
+                    }
                     break;
                 default:
                     break;

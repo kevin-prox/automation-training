@@ -10,6 +10,7 @@ public class PageFactory {
     private static SelectFlightPage selectFlightPage;
     private static SearchResultsPage searchResultsPage;
     private static PricePage pricePage;
+    private static PurchasePage purchasePage;
 
     public PageFactory(FirefoxDriver firefoxDriver) {
         this.driver = firefoxDriver;
@@ -29,6 +30,14 @@ public class PageFactory {
         }
 
         return planATripPage;
+    }
+
+    public PurchasePage getPurchasePageInstance() {
+        if (purchasePage == null) {
+            purchasePage = new PurchasePage(driver);
+        }
+
+        return purchasePage;
     }
 
     public SelectFlightPage getSelectFlightPageInstance() {
